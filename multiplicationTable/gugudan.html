@@ -7,7 +7,7 @@
 <body>
     <div id="root"> 
         <div>{{first}} 곱하기 {{second}} 는?</div>
-        <input type="number" v-model="value">
+        <input type="number" v-model="value" ref="answer">
         <button v-on:click="onclickMult">입력</button>
         <br><br>
         <div>{{result}}</div>
@@ -32,12 +32,11 @@
 
                     this.first= Math.ceil(Math.random()*9);
                     this.second= Math.ceil(Math.random()*9);
-                    this.value= '';
                 } else {
                     this.result = '오답!';
-
-                    this.value= '';
                 }
+                this.value= '';
+                this.$refs.answer.focus();
             }
         }
     });
