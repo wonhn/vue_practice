@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>끝말잇기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root"> 
+        <div>{{word}}</div>
+        <input type="text" v-model="value" ref="answer">
+        <button v-on:click="onclickMult">입력</button>
+        <br><br>
+        <div>{{result}}</div>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            word: '',
+            value: '',
+            result: '',
+        },
+        methods: {
+            onclickMult(e){
+                e.preventDefault;
+                var rst = app.first * app.second;
+
+                if(rst == app.value){
+                    this.result = '정답';
+
+                    this.first= Math.ceil(Math.random()*9);
+                    this.second= Math.ceil(Math.random()*9);
+                } else {
+                    this.result = '오답!';
+                }
+                this.value= '';
+                this.$refs.answer.focus();
+            }
+        }
+    });
+</script>
+</html>
