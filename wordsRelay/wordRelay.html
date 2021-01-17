@@ -8,7 +8,7 @@
     <div id="root"> 
         <div>{{word}}</div>
         <input type="text" v-model="value" ref="answer">
-        <button v-on:click="onclickMult">입력</button>
+        <button v-on:click="onclickEvent">입력</button>
         <br><br>
         <div>{{result}}</div>
     </div>
@@ -22,19 +22,16 @@
             result: '',
         },
         methods: {
-            onclickMult(e){
+            onclickEvent(e){
                 e.preventDefault;
                 var rst = app.first * app.second;
-
-                if(rst == app.value){
+                if(this.word[this.word.length -1] === this.value[0]){
                     this.result = '정답';
-
-                    this.first= Math.ceil(Math.random()*9);
-                    this.second= Math.ceil(Math.random()*9);
+                    this.word = this.value;
                 } else {
-                    this.result = '오답!';
+                    this.result = '땡';
                 }
-                this.value= '';
+                this.value = '';
                 this.$refs.answer.focus();
             }
         }
