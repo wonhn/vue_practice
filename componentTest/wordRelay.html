@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>끝말잇기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root"> 
+        1: <word-relay start-word="테스트1"></word-relay>
+        2: <word-relay start-word="테스트2"></word-relay>
+        3: <word-relay start-word="테스트3"></word-relay>
+    </div>
+</body>
+<script>
+    Vue.component('word-relay', {
+        template: `
+            <div>
+                <div>{{word}}</div>
+                <input type="text" v-model="value" ref="answer">
+                <button v-on:click="onclickEvent">입력</button>
+                <br><br>
+                <div>{{result}}</div>
+            </div>
+        `,
+        props: ['start-word'],
+        data: function () {
+            return {word: this.startWord,
+                    value: '',
+                    result: ''}
+        },
+        methods: {
+            onclickEvent(e){
+                e.preventDefault;
+                var rst = app.first * app.second;
+                if(this.word[this.word.length -1] === this.value[0]){
+                    this.result = '정답';
+                    this.word = this.value;
+                } else {
+                    this.result = '땡';
+                }
+                this.value = '';
+                this.$refs.answer.focus();
+            }
+        }
+    });
+</script>
+<script>
+    const app = new Vue({
+        el: '#root',
+    });
+</script>
+</html>
