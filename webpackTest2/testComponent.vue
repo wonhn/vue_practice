@@ -5,7 +5,6 @@
         <input ref="answer" v-model="value"/>
         <button v-on:click="onSubmitForm">입력</button>
         <div>시도 : {{input}}</div>
-
     </div>
 </template>
 
